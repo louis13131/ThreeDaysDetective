@@ -14,10 +14,6 @@ public class ConsoleInteraction {
         return scanner.nextLine();
     }
 
-    public String readWord(){
-        return scanner.next();
-    }
-
     public String getAnswerBeforeGame(){
         String input = readLine();
         String answer = "";
@@ -37,13 +33,22 @@ public class ConsoleInteraction {
 
     public String getAnswerInGame(Game game){
         print("Введите команду: ");
-        String answer = "";
-        String instruction = readWord();
-        switch (instruction) {
-            case "/info":
-                String person = readLine().substring(1);
+        String instruction = readLine();
+        String answer = processCommandInGame(instruction, game);
+        print(answer);
+        return answer;
 
-                switch (person) {
+    }
+
+    protected String processCommandInGame(String instruction, Game game){
+        String[] parts = instruction.trim().split(" ", 2);
+        String command = parts[0];  // Команда (первое слово)
+        String argument = (parts.length > 1) ? parts[1] : "";
+        String answer = "";
+        switch (command) {
+            case "/info":
+
+                switch (argument) {
                     case "Лидия Черткова":
                         answer = game.lidiaChertkova.getInfo();
                         break;
@@ -76,7 +81,6 @@ public class ConsoleInteraction {
             default:
                 answer = "Такой команды не существует";
         }
-        print(answer);
         return answer;
     }
 
