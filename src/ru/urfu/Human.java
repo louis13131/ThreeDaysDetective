@@ -17,7 +17,16 @@ public abstract class Human {
         this.reason = character[5];
     }
 
-    public void getInfo(){
-        System.out.println(name+" "+surname+" "+age+"\n"+profession+"\n"+impression+"\n"+reason);
+    public String getInfo(){
+        String info = new String ("--- Информация о " + name + " ---" + "\n"+
+                "Род занятий: " + profession + "\n" +
+                "Описание: " + impression + "\n" +
+                "Мотив: " + reason);
+        /*System.out.println("--- Информация о " + name + " ---");
+        System.out.println("Род занятий: " + profession);
+        System.out.println("Описание: " + impression);
+        System.out.println("Мотив: " + reason);
+        //System.out.println(name+" "+surname+" "+age+"\n"+ " " profession+"\n"+impression+"\n"+reason);*/
+        return info;
     }
 }
