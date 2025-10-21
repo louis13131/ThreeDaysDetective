@@ -11,7 +11,8 @@ public class ProcessMain
 
         while(true){
             consoleInteraction.print("Введите команду: ");
-            if (consoleInteraction.getAnswerBeforeGame().equals("Игра началась")){
+            String input = consoleInteraction.readLine();
+            if (consoleInteraction.getAnswerBeforeGame(input).equals("Игра началась")){
                 Game game = new Game();
                 game.start();
             }

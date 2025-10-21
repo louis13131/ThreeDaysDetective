@@ -76,4 +76,28 @@ public class ConsoleInteractionTest {
         String result = consoleInteraction.processCommandInGame("/incorrectCommand",  game);
         Assertions.assertEquals("Такой команды не существует", result);
     }
+
+    @Test
+    public void getAnswerBeforeHelpTest() {
+        Game game = new Game();
+        ConsoleInteraction consoleInteraction = new ConsoleInteraction();
+        String result = consoleInteraction.getAnswerBeforeGame("/help");
+        Assertions.assertEquals(Strings.helpMessage, result);
+    }
+
+    @Test
+    public void getAnswerBeforeStartTest() {
+        Game game = new Game();
+        ConsoleInteraction consoleInteraction = new ConsoleInteraction();
+        String result = consoleInteraction.getAnswerBeforeGame("/start_game");
+        Assertions.assertEquals("Игра началась", result);
+    }
+
+    @Test
+    public void getAnswerBeforeIncorrectTest() {
+        Game game = new Game();
+        ConsoleInteraction consoleInteraction = new ConsoleInteraction();
+        String result = consoleInteraction.getAnswerBeforeGame("/not_comand");
+        Assertions.assertEquals("Такой команды не существует", result);
+    }
 }

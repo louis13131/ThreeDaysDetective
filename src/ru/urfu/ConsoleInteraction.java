@@ -14,12 +14,12 @@ public class ConsoleInteraction {
         return scanner.nextLine();
     }
 
-    public String getAnswerBeforeGame(){
-        String input = readLine();
+    public String getAnswerBeforeGame(String input){
         String answer = "";
         switch (input){
             case "/help":
                 System.out.println(Strings.helpMessage);
+                answer = Strings.helpMessage;
                 break;
             case "/start_game":
                 answer = "Игра началась";
@@ -27,6 +27,7 @@ public class ConsoleInteraction {
 
             default:
                 System.out.println("Такой команды не существует");
+                answer = "Такой команды не существует";
         }
         return answer;
     }
