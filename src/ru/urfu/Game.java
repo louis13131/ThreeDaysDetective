@@ -1,8 +1,5 @@
 package ru.urfu;
 
-import java.io.Console;
-import java.util.Scanner;
-
 public class Game {
     Killer lidiaChertkova;
     Victim dmitriyOrlov;
@@ -18,18 +15,54 @@ public class Game {
         grigoriyZharov = new Victim(Strings.grigoriy, "alive");
     }
 
-    public void start() {
-        String welcome = Strings.welcomeMessage;
-        ConsoleInteraction consoleInteraction = new ConsoleInteraction();
-        consoleInteraction.print(welcome);
-
-        while (true) {
-            String answer = consoleInteraction.getAnswerInGame(this);
-
-            if  (answer.equals("Игра завершена")) {
-                break;
-            }
-        }
+    private String[] stringParsing(String instruction){
+        return instruction.trim().split(" ", 2);
     }
 
+    public String processCommandInGame(String instruction){
+        String[] parts = stringParsing(instruction);
+        String comand = parts[0];
+        String argument = (parts.length > 1) ? parts[1] : "";
+        String answer = "";
+        switch (comand) {
+            case "/info":
+
+                switch (argument) {
+                    case "Лидия Черткова":
+                        answer = lidiaChertkova.getInfo();
+                        break;
+                    case "Дмитрий Орлов":
+                        answer = dmitriyOrlov.getInfo();
+                        break;
+                    case "Анна Воронова":
+                        answer = annaVoronova.getInfo();
+                        break;
+                    case "Пётр Воронов":
+                        answer = petrVoronov.getInfo();
+                        break;
+                    case "Григорий Жаров":
+                        answer = grigoriyZharov.getInfo();
+                        break;
+                    default:
+                        answer = "Такого персонажа не существует";
+
+
+                }
+                break;
+
+            case "/help":
+                answer = Strings.helpMessage;
+                break;
+            case "/start_game":
+                answer = "Игра уже началась";
+                break;
+            case "/exit":
+                answer = "Игра завершена";
+                break;
+
+            default:
+                answer = "Такой команды не существует";
+        }
+        return answer;
+    }
 }
