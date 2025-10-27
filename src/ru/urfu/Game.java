@@ -9,10 +9,10 @@ public class Game {
 
     public Game(){
         lidiaChertkova = new Killer(Strings.lidia);
-        dmitriyOrlov = new Victim(Strings.dmitriy, "alive");
-        annaVoronova = new Victim(Strings.anna, "alive");
-        petrVoronov = new Victim(Strings.petr, "alive");
-        grigoriyZharov = new Victim(Strings.grigoriy, "alive");
+        dmitriyOrlov = new Victim(Strings.dmitriy);
+        annaVoronova = new Victim(Strings.anna);
+        petrVoronov = new Victim(Strings.petr);
+        grigoriyZharov = new Victim(Strings.grigoriy);
     }
 
     private String[] stringParsing(String instruction){

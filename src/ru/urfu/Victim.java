@@ -1,14 +1,19 @@
 package ru.urfu;
 
 public class Victim extends Human{
-    private String status;
-
-    protected Victim(String[] character, String status) {
-        super(character);
-        this.status = status;
+    private enum Status{
+        ALIVE,
+        DEAD
     }
 
-    public String getStatus() {
-        return status;
+    private Status currentStatus;
+
+    protected Victim(String[] character) {
+        super(character);
+        currentStatus = Status.ALIVE;
+    }
+
+    public Status getStatus() {
+        return currentStatus;
     }
 }
