@@ -1,11 +1,11 @@
 package ru.urfu;
 
 public class Game {
-    Killer lidiaChertkova;
-    Victim dmitriyOrlov;
-    Victim annaVoronova;
-    Victim petrVoronov;
-    Victim grigoriyZharov;
+    private Killer lidiaChertkova;
+    private Victim dmitriyOrlov;
+    private Victim annaVoronova;
+    private Victim petrVoronov;
+    private Victim grigoriyZharov;
 
     public Game(){
         lidiaChertkova = new Killer(Strings.lidia);
