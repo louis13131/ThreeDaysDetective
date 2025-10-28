@@ -1,5 +1,6 @@
 package ru.urfu;
 
+
 public abstract class Human {
     private final String name;
     private final String surname;
@@ -18,15 +19,6 @@ public abstract class Human {
     }
 
     public String getInfo(){
-        String info = new String ("--- Информация о " + name + " ---" + "\n"+
-                "Род занятий: " + profession + "\n" +
-                "Описание: " + impression + "\n" +
-                "Мотив: " + reason);
-        /*System.out.println("--- Информация о " + name + " ---");
-        System.out.println("Род занятий: " + profession);
-        System.out.println("Описание: " + impression);
-        System.out.println("Мотив: " + reason);
-        //System.out.println(name+" "+surname+" "+age+"\n"+ " " profession+"\n"+impression+"\n"+reason);*/
-        return info;
+        return String.format("--- Информация о %s %s --- \n%s лет \nРод занятий: %s \nОписание: %s \nМотив: %s", name, surname, age, profession, impression, reason);
     }
 }
