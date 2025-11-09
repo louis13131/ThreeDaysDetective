@@ -9,7 +9,7 @@ public class ProcessMain
 {
     public void run() throws TelegramApiException {
         TelegramBotsApi botsApi = new TelegramBotsApi(DefaultBotSession.class);
-        botsApi.registerBot(new TelegramIntecraction());
+        botsApi.registerBot(new TelegramInteraction());
     }
 
 }
