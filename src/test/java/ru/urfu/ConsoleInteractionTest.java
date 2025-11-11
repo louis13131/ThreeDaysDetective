@@ -83,6 +83,13 @@ public class ConsoleInteractionTest {
     @Test
     public void getAnswerBeforeStartTest() {
         ProcessCommand processCommand = new ProcessCommand();
+        String result = processCommand.getAnswerBeforeGame("/start");
+        Assertions.assertEquals(Strings.helloMessage, result);
+    }
+
+    @Test
+    public void getAnswerBeforeStartGameTest() {
+        ProcessCommand processCommand = new ProcessCommand();
         String result = processCommand.getAnswerBeforeGame("/start_game");
         Assertions.assertEquals("Игра началась", result);
     }
