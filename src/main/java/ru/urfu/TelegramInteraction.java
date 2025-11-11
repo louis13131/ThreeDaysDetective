@@ -5,12 +5,15 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
+import java.util.HashMap;
+
 public class TelegramInteraction extends TelegramLongPollingBot {
 
-    Game game;
+    HashMap<String, Game> games;
 
     TelegramInteraction() {
-        this.game = new Game();
+
+        this.games = new HashMap<>();
     }
 
     @Override
@@ -30,19 +33,27 @@ public class TelegramInteraction extends TelegramLongPollingBot {
             String chatId = String.valueOf(update.getMessage().getChatId());
             ProcessCommand processCommand = new ProcessCommand();
             String text;
+            Game currentGame;
 
-            if (game.getGameStatus()) {
-                text = game.processCommandInGame(messageText);
+            if (games.get(chatId) == null){
+                Game game = new Game();
+                games.put(chatId, game);
+            }
+
+            currentGame = games.get(chatId);
+
+            if (games.get(chatId).getGameStatus()) {
+                text = currentGame.processCommandInGame(messageText);
 
                 if (text.equals("Игра завершена")){
-                    game.setGameStatus(false);
+                    currentGame.setGameStatus(false);
                 }
             }
             else
                 text = processCommand.getAnswerBeforeGame(messageText);
 
             if (text.equals("Игра началась")){
-                game.setGameStatus(true);
+                currentGame.setGameStatus(true);
             }
 
             execute(text, chatId);
